@@ -1,0 +1,179 @@
+<div class="main-content">
+    <mat-tab-group>
+        <mat-tab label="Latest Result">
+            <div class="container">
+                <div class="select" flex="15">
+                        <mat-form-field>
+                                <select matNativeControl required [(ngModel)]="selectedCourse">
+                                  <option value="CE">CE</option>
+                                  <option value="ME">ME</option>
+                                  <option value="IT">IT</option>
+                                  <option value="BE">BE</option>
+                                </select>
+                              </mat-form-field>
+                </div>
+                <div class="select" flex="15">
+                        <mat-form-field>
+                                <select matNativeControl required [(ngModel)]="selectedSemester">
+                                  <option value="Semester1">SEMESTER1</option>
+                                  <option value="Semester2">SEMESTER2</option>
+                                  <option value="Semester3">SEMESTER3</option>
+                                  <option value="Semester4">SEMESTER4</option>
+                                </select>
+                              </mat-form-field>
+                </div>
+                <div  flex="85">
+                    
+                    <input matInput placeholder="Enter your Enrollment Number" #enrollmentN [(ngModel)]="enrollNumber">
+                    <button mat-raised-button class="button" (click)="getStudentDetails()">Go</button>
+
+                </div>
+
+                <div *ngIf="show">
+
+                    <table #table flex mat-table [dataSource]="student">
+                        <ng-container matColumnDef="Name">
+                            <th mat-header-cell *matHeaderCellDef>Name </th>
+                            <td mat-cell *matCellDef="let element">{{element}} </td>
+                        </ng-container>
+
+
+                        <tr mat-header-row *matHeaderRowDef="studentColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: studentColumns;"></tr>
+                    </table>
+
+
+
+                    <div>
+
+                        <table #table flex mat-table [dataSource]="keys" *ngIf="keys" style="width:50%;float:left">
+                            
+                            <ng-container matColumnDef="Subject">
+                                <th mat-header-cell *matHeaderCellDef> Subject </th>
+                                <td mat-cell *matCellDef="let element"> {{element}} </td>
+                            </ng-container>
+
+
+                            <!-- <ng-container matColumnDef="Grade">
+                                <th mat-header-cell *matHeaderCellDef> Grade </th>
+                                <td mat-cell *matCellDef="let element"> {{element}} </td>
+                            </ng-container> -->
+
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <table #table flex mat-table [dataSource]="values" *ngIf="values" style="width:50%;float:left">
+                            
+                            <ng-container matColumnDef="Grade">
+                                <th mat-header-cell *matHeaderCellDef> Grade </th>
+                                <td mat-cell *matCellDef="let element"> {{element}} </td>
+                            </ng-container>
+
+
+                            <tr mat-header-row *matHeaderRowDef="displayValues"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayValues;"></tr>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="All Results">
+            
+            
+                <div  flex="85">
+                        <input matInput placeholder="Enter your Enrollment Number" #enrollmentN [(ngModel)]="enrollNumber">
+                        <button mat-raised-button class="button" >Go</button>
+    
+                    </div>
+
+<!-- 
+            <div>
+
+                <table #table flex mat-table [dataSource]="result" *ngIf="result">
+                   
+
+                    <ng-container matColumnDef="Subject">
+                        <th mat-header-cell *matHeaderCellDef> Subject </th>
+                        <td mat-cell *matCellDef="let element"> {{element}} </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="Grade">
+                        <th mat-header-cell *matHeaderCellDef> Grade </th>
+                        <td mat-cell *matCellDef="let element"> {{element}} </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+
+            </div> -->
+        </mat-tab>
+    </mat-tab-group>
+</div>
+<!-- <div>
+      
+      <mat-form-field>
+          <mat-select name="course">
+              <mat-option *ngFor="let course of courses" [value]="course.courseName">
+                  {{course.courseName}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+  </div>
+  <div layout="column">
+      <h4>Select year</h4>
+      <mat-form-field>
+          <mat-select matInput #course id="name" placeholder="Course" name="course" required>
+              <mat-option *ngFor="let year of years" [value]="year.year">
+                  {{year.year}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+  </div> -->
+
+
+
+<!-- <mat-card >
+  
+  <mat-card-content>
+    <fieldset style="border:0">
+      <form #resultForm>
+        <div layout="row">
+          <div layout='column' class='pad-top-sm' flex>
+              <mat-form-field flex>
+            <mat-select placeholder="Course" name='course'
+              required>
+              <mat-option *ngFor="let course of courses" [value]="course"> {{course.value}} </mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+          
+        </div> -->
+<!-- <div layout="row">
+          <mat-form-field flex>
+            <textarea matInput placeholder="Comments" [(ngModel)]="productVersion.comments" name="pComments"
+              rows="1"></textarea>
+          </mat-form-field>
+          <div layout='row' layout-align="end center" flex='30'>
+            <td-file-upload class="push-left-sm push-right-sm" #fileInput name='productVersionFile' (select)="selectFile($event)" (cancel)="removeFile()"
+              color='accent' accept=".zip" required>
+              <span *ngIf='productFile' matTooltip='{{productFile.name}}'>1 file selected.</span>
+              <ng-template td-file-input-label>
+                <mat-icon>file_upload</mat-icon>
+                <span>Upload File</span>
+                <span [hidden]="fileInput?.required">*</span>
+              </ng-template>
+            </td-file-upload>
+            <button mat-raised-button color='accent' [disabled]='!productVersionForm.form.valid || !productFile || isFileUploading' (click)='uploadFile()'>SAVE</button>
+          </div>
+        </div> -->
+<!--  </form>
+    </fieldset>
+  </mat-card-content>
+</mat-card> -->

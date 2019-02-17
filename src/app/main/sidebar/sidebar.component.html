@@ -1,0 +1,8 @@
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;" id="mySidebar">
+  <!-- Logo -->
+  <img src="../../../assets/ksv-logo.png" class="logo">
+  <!-- Sidebar Links -->
+  <a class="w3-bar-item w3-button" [ngClass]="{ 'w3-teal' : active === '/' }"  routerLink="/"> <i class="w3-medium fa fa-home"></i> Home</a>
+  <a class="w3-bar-item w3-button" routerLink="/result" [ngClass]="{ 'w3-teal' : active === '/result'} "> <i class="w3-medium fa fa-plus" ></i> Result</a>
+  <!-- <a class="w3-bar-item w3-button" (click)="logOut()"><i class="w3-medium fa fa-sign-out"></i>  Logout</a> -->
+</nav>
