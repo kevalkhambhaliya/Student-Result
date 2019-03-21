@@ -3,6 +3,8 @@
   <img src="../../../assets/ksv-logo.png" class="logo">
   <!-- Sidebar Links -->
   <a class="w3-bar-item w3-button" [ngClass]="{ 'w3-teal' : active === '/' }"  routerLink="/"> <i class="w3-medium fa fa-home"></i> Home</a>
+  <a class="w3-bar-item w3-button" routerLink="/updates" [ngClass]="{ 'w3-teal' : active === '/updates'} "> <i class="w3-medium fa fa-bullhorn" ></i> Updates</a>
   <a class="w3-bar-item w3-button" routerLink="/result" [ngClass]="{ 'w3-teal' : active === '/result'} "> <i class="w3-medium fa fa-plus" ></i> Result</a>
+  <a class="w3-bar-item w3-button" routerLink="/faculty" [ngClass]="{ 'w3-teal' : active === '/faculty'} "> <i class="w3-medium fa fa-users" ></i> Faculties</a>
   <!-- <a class="w3-bar-item w3-button" (click)="logOut()"><i class="w3-medium fa fa-sign-out"></i>  Logout</a> -->
 </nav>

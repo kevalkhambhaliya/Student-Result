@@ -1,0 +1,27 @@
+<div class="main-content">
+  
+        
+    
+    <h2 class="bg-text">List of Faculties</h2>
+    <div class="table-responsive">
+        <table datatable class="table table-border table-hover" id="dataTable">
+        <thead>
+            <th>Sr.No</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Email-ID</th>
+            <th>Desk</th>
+        
+        </thead>
+        
+        <tr *ngFor="let f of Faculties">
+            <td>{{f.SrNo}}</td>
+            <td>{{f.Name}}</td>
+            <td>{{f.Department}}</td>
+            <td>{{f.Email}}</td>
+            <td>{{f.Desk}}</td>
+
+        </tr>
+        </table>
+    </div>
+  </div>

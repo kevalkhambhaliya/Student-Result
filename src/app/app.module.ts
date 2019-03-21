@@ -8,11 +8,14 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
+import { UpdatesComponent } from './main/updates/updates.component';
 import { ResultComponent } from './main/result/result.component';
 import { SidebarComponent } from './main/sidebar/sidebar.component';
+import { FacultyComponent } from './main/faculty/faculty.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,8 +38,16 @@ const routes : Routes = [
   //   pathMatch:'full'
   // },
   {
+    path:'updates',
+    component: UpdatesComponent
+  },
+  {
     path:'result',
     component: ResultComponent
+  },
+  {
+    path:'faculty',
+    component: FacultyComponent
   },
   {
     path:'**',
@@ -48,12 +59,15 @@ const routes : Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
+    UpdatesComponent,
     ResultComponent,
     SidebarComponent,
+    FacultyComponent,
     HighlightDirective
   ],
   imports: [
     BrowserModule,
+    DataTablesModule,
     RouterModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
