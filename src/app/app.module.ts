@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule,Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr'; 
+import { ToastrModule } from 'ngx-toastr';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -23,8 +23,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { ConfigService } from './services/config.service';
 import { FirebaseServiceService } from './services/firebase-service.service';
+import { AdminComponent } from './main/admin/admin.component';
 
-const routes : Routes = [
+const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
@@ -35,12 +36,16 @@ const routes : Routes = [
   //   pathMatch:'full'
   // },
   {
-    path:'result',
+    path: 'result',
     component: ResultComponent
   },
   {
-    path:'**',
-    redirectTo:''
+    path: 'admin',
+    component: AdminComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ]
 
@@ -50,7 +55,8 @@ const routes : Routes = [
     HomeComponent,
     ResultComponent,
     SidebarComponent,
-    HighlightDirective
+    HighlightDirective,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -68,11 +74,12 @@ const routes : Routes = [
     MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebase),
     ToastrModule.forRoot({
-      timeOut:3000,
+      timeOut: 3000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     })
   ],
-  providers: [ConfigService,FirebaseServiceService],
-  bootstrap: [AppComponent]})
+  providers: [ConfigService, FirebaseServiceService],
+  bootstrap: [AppComponent]
+})
 export class AppModule { }
